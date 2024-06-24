@@ -1,0 +1,33 @@
+<button 
+pButton 
+pRipple 
+label="Adicionar utilizador"
+routerLink="/add-user"
+class="p-button-success mb-1">
+</button>
+<div class="col-12">
+    <p-table [value]="users" scrollDirection="both" [scrollable]="true" scrollHeight="100wh" styleClass="mt-3" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:200px">ID</th>
+          <th style="width:200px">Name</th>
+          <th style="width:200px">Email</th>
+          <th style="width:200px">Type</th>
+          <th style="width:75px">Status</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td style="width:200px" class="font-bold">{{user.id}}</td>
+          <td style="width:200px">{{user.username}}</td>
+          <td style="width:200px">{{user.email}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{user.type}}</span>
+          </td>
+          <td style="width: 75px;">
+            <button (click)="changeStatus(user.id, user.status)" class="border-none" style="background-color: #fff; cursor: pointer"><img src="assets/images/button{{ user.status }}.png" class="w-3rem"/></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+</div>

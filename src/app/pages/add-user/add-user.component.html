@@ -1,0 +1,39 @@
+<div class="grid">
+	<div class="col-12 md:col-12">
+		<div class="card p-fluid">
+		    <h5>User Form</h5>
+        <form [formGroup]="addUserForm">
+            <div class="field">
+                <label htmlFor="id">ID</label>
+                <input pInputText formControlName="id" id="id" type="text" />
+            </div>
+	    <div class="field">
+		    <label htmlFor="name">Name</label>
+		    <input pInputText formControlName="name" id="name" type="text" />
+	    </div>
+	    <div class="field">
+		    <label htmlFor="password">Password</label>
+		    <input pInputText formControlName="password" id="email" type="password" />
+	    </div>
+	    <div class="field">
+		    <label htmlFor="email">Email</label>
+		    <input pInputText formControlName="email" id="email" type="text" />
+	    </div>
+        <div class="field">
+		    <label htmlFor="type">Type</label>
+		    <p-dropdown 
+            [options]="types" 
+            optionLabel="type" 
+            placeholder="Select a Type" />
+	    </div>
+    </form>
+        <button 
+        pButton 
+        pRipple 
+        label="Criar Utilizador"
+        (click)="criarUser()"
+        routerLink="/users"
+        class="p-button-success mt-3">
+        </button>
+    </div>
+</div>
