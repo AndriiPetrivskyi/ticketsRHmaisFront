@@ -13,7 +13,7 @@
 	    </div>
 	    <div class="field">
 		    <label htmlFor="password">Password</label>
-		    <input pInputText formControlName="password" id="email" type="password" />
+		    <input pInputText formControlName="password" id="password" type="password" />
 	    </div>
 	    <div class="field">
 		    <label htmlFor="email">Email</label>
@@ -24,15 +24,16 @@
 		    <p-dropdown 
             [options]="types" 
             optionLabel="type" 
-            placeholder="Select a Type" />
+            formControlName="type"
+            placeholder="Select a Type">
+            </p-dropdown>
 	    </div>
     </form>
         <button 
         pButton 
         pRipple 
         label="Criar Utilizador"
-        (click)="criarUser()"
-        routerLink="/users"
+        (click)="createUser()"
         class="p-button-success mt-3">
         </button>
     </div>

@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { AddUserService } from '../../services/add-user.service';
 import { DropdownModule } from 'primeng/dropdown';
+import { RouterLink } from '@angular/router';
 
 interface Type {
   type: string;
@@ -24,8 +25,8 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
     this.types = [
-      { type: 'User' },
-      { type: 'Admin'}
+      { type: 'user' },
+      { type: 'admin'}
     ];
   }
 
@@ -39,13 +40,18 @@ export class AddUserComponent implements OnInit {
 
   constructor(private adduserService: AddUserService) {}
 
-  criarUser() {
+  createUser() {
     const id = this.addUserForm.get('id')?.value as string;
     const name = this.addUserForm.get('name')?.value as string;
     const password = this.addUserForm.get('password')?.value as string;
     const email = this.addUserForm.get('email')?.value as string;
-    const type = this.addUserForm.get('type')?.value as string;
+    const typeObject = this.addUserForm.get('type')?.value as { type: string } | null;
 
-    this.adduserService.criarUser(id, name, password, email, type);
+    if (typeObject !== null) {
+      const type = typeObject.type;
+      this.adduserService.createUser(id, name, password, email, type);
+    } else {
+      console.error("Type is null");
+    }
   }
 }

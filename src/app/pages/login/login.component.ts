@@ -24,7 +24,7 @@ export class LoginComponent{
   });
 
   constructor(private authService: AuthenticationService) {}
-
+  
   login() {
     const id = this.loginForm.get('id')?.value as string;
     const password = this.loginForm.get('password')?.value as string;

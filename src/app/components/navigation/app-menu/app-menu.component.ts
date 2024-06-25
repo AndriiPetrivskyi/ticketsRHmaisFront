@@ -25,8 +25,13 @@ export class AppMenuComponent implements OnInit {
         label: 'Home',
         items: [
           {
+            label: 'My tickets',
+            icon: 'pi pi-fw pi-user',
+            routerLink: ['/my-tickets'],
+          },
+          {
             label: 'Tickets',
-            icon: 'pi pi-fw pi-home',
+            icon: 'pi pi-fw pi-ticket',
             routerLink: ['/tickets'],
           },
         ],
@@ -52,11 +57,6 @@ export class AppMenuComponent implements OnInit {
             label: 'Utilizadores',
             icon: 'pi pi-fw pi-id-card',
             routerLink: ['/users'],
-          },
-          {
-              label: 'Adicionar utilizador',
-              icon: 'pi pi-fw pi-user-plus',
-              routerLink: ['/add-user'],
           },
         ],
       });
