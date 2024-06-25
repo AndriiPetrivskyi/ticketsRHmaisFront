@@ -1,10 +1,9 @@
-<button 
-pButton 
-pRipple 
-label="Adicionar ticket"
-routerLink="/add-user"
-class="p-button-success mb-1">
-</button>
+<div class="p-toolbar-group-center ml-3">
+  <span class="p-input-icon-right">
+      <i class="pi pi-search"></i>
+      <input pInputText placeholder="Search" />
+  </span>
+</div>
 <div class="col-12">
   <p-table [value]="tickets" scrollDirection="both" [scrollable]="true" scrollHeight="100wh" styleClass="mt-3" responsiveLayout="scroll">
     <ng-template pTemplate="header">
@@ -14,6 +13,8 @@ class="p-button-success mb-1">
       <th style="width:200px">Title</th>
       <th style="width:200px">Body</th>
       <th style="width:200px">Status</th>
+      <th style="width:200px">Email</th>
+      <th style="width:200px">Data</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-ticket>
@@ -23,6 +24,8 @@ class="p-button-success mb-1">
       <td style="width:200px">{{ ticket.title }}</td>
       <td style="width:200px">{{ ticket.body }}</td>
       <td style="width:200px">{{ ticket.status }}</td>
+      <td style="width:200px">{{ ticket.email }}</td>
+      <td style="width:200px">{{ ticket.data }}</td>
     </tr>
   </ng-template>
 </p-table>

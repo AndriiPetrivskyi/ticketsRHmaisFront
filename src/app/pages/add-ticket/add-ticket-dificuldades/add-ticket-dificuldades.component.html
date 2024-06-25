@@ -1,0 +1,40 @@
+<div class="grid">
+	<div class="col-12 md:col-12">
+		<div class="card p-fluid">
+		    <h5>Ticket Form</h5>
+        <form [formGroup]="addTicketForm">
+            <div class="field">
+                <label htmlFor="type">Escolha o sub-tipo do ticket</label>
+                <p-dropdown 
+                    [options]="types" 
+                    optionLabel="type" 
+                    formControlName="type"
+                    placeholder="Select a Type">
+                </p-dropdown>
+            </div>
+	    <div class="field">
+		    <label htmlFor="title">Title</label>
+		    <input pInputText formControlName="title" id="title" type="text" />
+	    </div>
+        <div class="field">
+            <label htmlFor="body">Body</label>
+            <p-editor formControlName="text" [style]="{ height: '320px' }">
+                <ng-template pTemplate="header">
+                    <span class="ql-formats">
+                        <button type="button" class="ql-bold" aria-label="Bold"></button>
+                        <button type="button" class="ql-italic" aria-label="Italic"></button>
+                        <button type="button" class="ql-image" aria-label="Underline"></button>
+                    </span>
+                </ng-template>
+            </p-editor>
+        </div>
+    </form>
+        <button 
+        pButton 
+        pRipple 
+        label="Criar Ticket"
+        (click)="createTicket()"
+        class="p-button-success mt-3">
+        </button>
+    </div>
+</div>

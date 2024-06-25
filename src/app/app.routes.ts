@@ -32,6 +32,34 @@ export const routes: Routes = [
             (m) => m.AddUserComponent
           ),
         },
+        {
+          path: 'add-ticket-pedido',
+          loadComponent: () =>
+            import('./pages/add-ticket/add-ticket-pedido/add-ticket-pedido.component').then(
+              (m) => m.AddTicketPedidoComponent
+            ),
+          },
+          {
+            path: 'add-ticket-dificuldades',
+            loadComponent: () =>
+              import('./pages/add-ticket/add-ticket-dificuldades/add-ticket-dificuldades.component').then(
+                (m) => m.AddTicketDificuldadesComponent
+              ),
+          },
+          {
+              path: 'add-ticket-salario',
+              loadComponent: () =>
+                import('./pages/add-ticket/add-ticket-salario/add-ticket-salario.component').then(
+                  (m) => m.AddTicketSalarioComponent
+                ),
+          },
+          {
+              path: 'add-ticket-sugestoes',
+              loadComponent: () =>
+               import('./pages/add-ticket/add-ticket-sugestoes/add-ticket-sugestoes.component').then(
+                 (m) => m.AddTicketSugestoesComponent
+              ),
+            },
       {
         path: 'users',
         canActivate: [adminGuard],

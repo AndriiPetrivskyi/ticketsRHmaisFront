@@ -6,7 +6,6 @@ import { ButtonModule } from 'primeng/button';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { AddUserService } from '../../services/add-user.service';
 import { DropdownModule } from 'primeng/dropdown';
-import { RouterLink } from '@angular/router';
 
 interface Type {
   type: string;

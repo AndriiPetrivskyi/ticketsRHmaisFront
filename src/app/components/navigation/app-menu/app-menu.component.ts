@@ -34,6 +34,33 @@ export class AppMenuComponent implements OnInit {
             icon: 'pi pi-fw pi-ticket',
             routerLink: ['/tickets'],
           },
+          {
+            label: 'Criar ticket',
+            icon: 'pi pi-fw pi-plus-circle',
+            items: [
+              {
+                label: 'Pedido de Esclarcimento',
+                routerLink: ['/add-ticket-pedido'],  
+              },
+              {
+                label: 'Report de dificuldades',
+                routerLink: ['/add-ticket-dificuldades'],
+              },
+              {
+                label: 'Exportação salarial',
+                routerLink: ['/add-ticket-salario'],
+              },
+              {
+                label: 'Envio de Sugestões',
+                routerLink: ['/add-ticket-sugestoes'],
+              },
+            ]
+          },
+          {
+            label: 'Report Indisponiblidade',
+            icon: 'pi pi-fw pi-exclamation-triangle',
+            routerLink: ['/report-indisponiblidade'],
+          },
         ],
       },
       {
