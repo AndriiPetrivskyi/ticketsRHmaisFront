@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule  } from '@angular/forms';
-import { AddTicketService } from '../../services/add-ticket-dificuldades.service';
+import { AddTicketDificuldadesService } from '../../../services/add-ticket-dificuldades.service';
 
 interface Type {
   type: string;
@@ -32,14 +32,22 @@ export class AddTicketDificuldadesComponent implements OnInit{
   addTicketForm = new FormGroup({
     type: new FormControl(''),
     title: new FormControl(''),
+    body: new FormControl(''),
   });
 
-  constructor(private addticketService: AddTicketService) {}
+  constructor(private addticketdificuldadesService: AddTicketDificuldadesService) {}
 
   createTicket() {
-    const type = this.addTicketForm.get('type')?.value as {type: string} | null;
+    const typeObject = this.addTicketForm.get('type')?.value as {type: string} | null;
     const title = this.addTicketForm.get('title')?.value as string;
+    const body = this.addTicketForm.get('body')?.value as string;
+    const type = "dificuldades";
 
-    this.addticketService.createTicket();
+    if (typeObject !== null) {
+      const subType = typeObject.type;
+      this.addticketdificuldadesService.createTicket(subType, title, body, type);
+  }else {
+    console.error("Type is null");
   }
+}
 }

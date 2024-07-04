@@ -29,7 +29,7 @@
           <div class="w-30rem d-flex justify-content-center align-items-center">
           <input
             type="text"
-            formControlName="username"
+            formControlName="email"
             id="email"
             placeholder="e-mail"
             pInputText
@@ -41,17 +41,17 @@
             pRipple
             class="mb-5 d-flex"
             style="padding-top: 0.65rem; padding-right: 1.5rem; border-radius: 0"
-            (click)="enivarEmail()">
+            (click)="onSendEmail()">
                 <p class="ml-2 mr-2 mb-1 mt-0">Enviar PIN</p>
                 <i class="pi pi-send"></i>
            </button>
           </div>
-          <label for="PIN" class="block text-900 text-xl font-medium mb-2"
+          <label for="pin" class="block text-900 text-xl font-medium mb-2"
             >PIN</label
           >
           <input
             type="text"
-            formControlName="username"
+            formControlName="pin"
             id="pin"
             placeholder="PIN"
             pInputText
