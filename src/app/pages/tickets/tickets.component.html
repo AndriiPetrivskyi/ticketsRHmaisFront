@@ -14,13 +14,13 @@
       <th style="width:200px">Body</th>
       <th style="width:200px">Status</th>
       <th style="width:200px">Email</th>
-      <th style="width:200px">Data</th>
+      <th style="width:200px">Data de criação</th>
       <th style="width:200px">subType</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-ticket>
     <tr>
-      <td style="width:200px"><img src='assets/images/{{ ticket.type }}Icon.png' class="w-2rem"></td>
+      <td style="width:200px">{{ ticket.type }}</td>
       <td style="width:200px">{{ ticket.id }}</td>
       <td style="width:200px">{{ ticket.title }}</td>
       <td style="width:200px">{{ ticket.body }}</td>
