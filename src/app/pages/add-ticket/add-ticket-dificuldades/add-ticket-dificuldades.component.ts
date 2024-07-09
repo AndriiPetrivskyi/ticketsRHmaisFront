@@ -46,8 +46,6 @@ export class AddTicketDificuldadesComponent implements OnInit{
     if (typeObject !== null && title !== null && body !== null) {
       const subType = typeObject.type;
       this.addticketdificuldadesService.createTicket(subType, title, body, type);
-  }else {
-    console.error("Type is null");
   }
 }
 }

@@ -8,15 +8,14 @@ import { Router } from '@angular/router';
 export class ResetPassService {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  sendEmail(data: any) {
-    return this.httpClient.post('http://localhost:3000/resetPass/send-email', data);
-  }
-
-  changePass(data: any) {
-    return this.httpClient.post('http://localhost:3000/resetPass/change-password', data)
-    .subscribe((response: any) => {
-      console.log('changePass response: ', response);
+  changePass(token: string, password: string) {
+    return this.httpClient.post('http://localhost:3000/resetPass/reset-password/:token', { token, password }).subscribe(() => {
+      alert('Password has been reset');
       this.router.navigate(['/login']);
     });
+  }
+
+  resetPassRequest(email: string) {
+    return this.httpClient.post('http://localhost:3000/resetPass/request-reset-password', { email });
   }
 }

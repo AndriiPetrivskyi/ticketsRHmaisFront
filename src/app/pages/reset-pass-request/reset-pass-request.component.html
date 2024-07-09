@@ -23,24 +23,26 @@
         style="border-radius: 53px"
       >
         <form [formGroup]="resetPassForm">
-          <label for="password" class="block text-900 font-medium text-xl mb-2"
-            >New password</label
+            <label for="email" class="block text-900 text-xl font-medium mb-2"
+            >E-mail</label
           >
+          <div class="w-30rem d-flex justify-content-center align-items-center">
           <input
-            type="password"
-            formControlName="password"
-            id="password"
-            placeholder="password"
+            type="text"
+            formControlName="email"
+            id="email"
+            placeholder="e-mail"
+            pInputText
             class="w-full md:w-30rem mb-5"
             style="padding: 1rem"
-            inputStyleClass="w-full p-3 md:w-30rem"
           />
+        </div>
         </form>
         <button
           pButton
           pRipple
-          label="Reset Password"
-          (click)="resetPass()"
+          label="Send link to reset pass"
+          (click)="sendLink()"
           class="w-full p-3 text-xl mt-3"
        ></button>
       </div>

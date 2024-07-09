@@ -11,7 +11,6 @@
       <th style="width:200px;">Type</th>
       <th style="width:200px">Ticket</th>
       <th style="width:200px">Title</th>
-      <th style="width:200px">Body</th>
       <th style="width:200px">Status</th>
       <th style="width:200px">Email</th>
       <th style="width:200px">Data de criação</th>
@@ -23,10 +22,9 @@
       <td style="width:200px">{{ ticket.type }}</td>
       <td style="width:200px">{{ ticket.id }}</td>
       <td style="width:200px">{{ ticket.title }}</td>
-      <td style="width:200px">{{ ticket.body }}</td>
       <td style="width:200px">{{ ticket.status }}</td>
       <td style="width:200px">{{ ticket.email }}</td>
-      <td style="width:200px">{{ ticket.data | date: "YYYY/MM/dd HH:mm" }}</td>
+      <td style="width:200px">{{ ticket.date | date: "YYYY/MM/dd HH:mm" }}</td>
       <td style="width:200px">{{ ticket.subType }}</td>
     </tr>
   </ng-template>
