@@ -17,6 +17,7 @@ export class ResetPassComponent implements OnInit {
 
   resetPassForm = new FormGroup({
     password: new FormControl(''),
+    ConfirmPass: new FormControl(''),
   });
 
   constructor(
@@ -32,8 +33,9 @@ export class ResetPassComponent implements OnInit {
 
   resetPass() {
     const password = this.resetPassForm.get('password')?.value as string;
+    const ConfirmPass = this.resetPassForm.get('ConfirmPass')?.value as string;
 
-    if (this.token) {
+    if (this.token && password === ConfirmPass) {
       this.resetPassService.changePass(this.token, password);
     }
   }

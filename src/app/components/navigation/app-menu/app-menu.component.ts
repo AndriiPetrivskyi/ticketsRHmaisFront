@@ -59,7 +59,7 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Report Indisponiblidade',
             icon: 'pi pi-fw pi-exclamation-triangle',
-            routerLink: ['/report-indisponiblidade'],
+            routerLink: ['/add-report-indisponiblidade'],
           },
         ],
       },

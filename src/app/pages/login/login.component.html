@@ -48,9 +48,9 @@
             inputStyleClass="w-full p-3 md:w-30rem"
           />
         </form>
-        <div *ngIf="messages" class="error">
+        <div *ngIf="message" class="error">
           <p-messages
-          [(value)]="messages"
+          [(value)]="message"
           [enableService]="false"
           [closable]="true" />
         </div>

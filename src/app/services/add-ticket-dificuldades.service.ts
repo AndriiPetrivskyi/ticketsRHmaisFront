@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 })
 export class AddTicketDificuldadesService {
   constructor(private httpClient: HttpClient, private router: Router) {}
-  private type = "dificuldades";
 
   createTicket(subType: string, title: string, body: string, type: string) {
     this.httpClient
@@ -18,7 +17,7 @@ export class AddTicketDificuldadesService {
         type,
       })
       .subscribe((response: any) => {
-        console.log('addUser response: ', response);
+        console.log('addTicket response: ', response);
         this.router.navigate(['/tickets']);
       });
   }

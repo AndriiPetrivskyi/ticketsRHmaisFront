@@ -40,7 +40,6 @@ export class AuthenticationService {
         if (response.token) {
           this.setToken(response.token);
           this.router.navigate(['/']);
-          // alert(JSON.stringify(this.getDecodedToken()));
         }
       });
   }

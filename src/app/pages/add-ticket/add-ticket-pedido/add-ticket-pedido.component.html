@@ -2,7 +2,7 @@
 	<div class="col-12 md:col-12">
 		<div class="card p-fluid">
 		    <h5>Ticket Form</h5>
-        <form>
+        <form [formGroup]="addTicketForm">
             <div class="field">
                 <label htmlFor="type">Escolha o sub-tipo do ticket</label>
                 <p-dropdown 
@@ -18,7 +18,7 @@
 	    </div>
         <div class="field">
             <label htmlFor="body">Body</label>
-            <p-editor formControlName="text" [style]="{ height: '320px' }">
+            <p-editor formControlName="body" [style]="{ height: '320px' }">
                 <ng-template pTemplate="header">
                     <span class="ql-formats">
                         <button type="button" class="ql-bold" aria-label="Bold"></button>
@@ -33,6 +33,7 @@
         pButton 
         pRipple 
         label="Criar Ticket"
+        (click)="createTicket()"
         class="p-button-success mt-3">
         </button>
     </div>

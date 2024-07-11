@@ -41,7 +41,7 @@ export class AddTicketDificuldadesComponent implements OnInit{
     const typeObject = this.addTicketForm.get('type')?.value as {type: string} | null;
     const title = this.addTicketForm.get('title')?.value as string;
     const body = this.addTicketForm.get('body')?.value as string;
-    const type = "dificuldades";
+    const type = "Dificuldades";
 
     if (typeObject !== null && title !== null && body !== null) {
       const subType = typeObject.type;

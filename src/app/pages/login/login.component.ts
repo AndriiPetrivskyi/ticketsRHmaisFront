@@ -5,8 +5,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
-import { Token } from '@angular/compiler';
-import { InvalidTokenError } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +14,7 @@ import { InvalidTokenError } from 'jwt-decode';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent{
-  messages!: { severity: string; detail: string; }[];
+  message!: { severity: string; detail: string; }[];
 
   loginForm = new FormGroup({
     id: new FormControl(''),
@@ -31,6 +29,6 @@ export class LoginComponent{
 
     this.authService.login(id, password);
 
-    this.messages = [{ severity: 'error', detail: 'Wrong ID and/or password' }];
+    this.message = [{ severity: 'error', detail: 'Wrong ID and/or password' }];
   }
 }

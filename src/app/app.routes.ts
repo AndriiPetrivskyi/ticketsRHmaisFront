@@ -17,13 +17,20 @@ export const routes: Routes = [
       ),
     canActivate: [authenticationGuard],
     children: [
-      {
+        {
         path: 'tickets',
         loadComponent: () =>
           import('./pages/tickets/tickets.component').then(
             (m) => m.TicketsComponent
           ),
         },
+        {
+          path: 'my-tickets',
+          loadComponent: () =>
+            import('./pages/my-tickets/my-tickets.component').then(
+              (m) => m.MyTicketsComponent
+            ),
+          },
         {
         path: 'add-user',
         canActivate: [adminGuard],
@@ -59,7 +66,14 @@ export const routes: Routes = [
                import('./pages/add-ticket/add-ticket-sugestoes/add-ticket-sugestoes.component').then(
                  (m) => m.AddTicketSugestoesComponent
               ),
-            },
+          },
+          {
+            path: 'add-report-indisponiblidade',
+            loadComponent: () =>
+              import('./pages/add-report/add-report.component').then(
+                (m) => m.AddReportComponent
+              ),
+          },
       {
         path: 'users',
         canActivate: [adminGuard],

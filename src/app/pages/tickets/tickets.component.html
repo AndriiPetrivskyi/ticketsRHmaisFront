@@ -5,7 +5,12 @@
   </span>
 </div>
 <div class="col-12">
-  <p-table [value]="tickets" scrollDirection="both" [scrollable]="true" scrollHeight="100wh" styleClass="mt-3" responsiveLayout="scroll">
+  <p-table
+    [value]="tickets"
+    [paginator]="true"
+    [rows]="10"
+    [tableStyle]="{ 'min-width': '50rem' }"
+>
     <ng-template pTemplate="header">
     <tr>
       <th style="width:200px;">Type</th>

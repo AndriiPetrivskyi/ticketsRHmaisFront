@@ -1,0 +1,37 @@
+<div class="p-toolbar-group-center ml-3">
+    <span class="p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input pInputText placeholder="Search" />
+    </span>
+  </div>
+  <div class="col-12">
+    <p-table
+    [value]="tickets"
+    [paginator]="true"
+    [rows]="10"
+    [tableStyle]="{ 'min-width': '50rem' }"
+>
+      <ng-template pTemplate="header">
+      <tr>
+        <th style="width:200px;">Type</th>
+        <th style="width:200px">Ticket</th>
+        <th style="width:200px">Title</th>
+        <th style="width:200px">Status</th>
+        <th style="width:200px">Email</th>
+        <th style="width:200px">Data de criação</th>
+        <th style="width:200px">subType</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ticket>
+      <tr>
+        <td style="width:200px">{{ ticket.type }}</td>
+        <td style="width:200px">{{ ticket.id }}</td>
+        <td style="width:200px">{{ ticket.title }}</td>
+        <td style="width:200px">{{ ticket.status }}</td>
+        <td style="width:200px">{{ ticket.email }}</td>
+        <td style="width:200px">{{ ticket.date | date: "YYYY/MM/dd HH:mm" }}</td>
+        <td style="width:200px">{{ ticket.subType }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  </div>
