@@ -41,6 +41,7 @@ import { MenuService } from '../../../services/app-menu.service';
         (click)="itemClick($event)"
         [ngClass]="item.class"
         [attr.target]="item.target"
+        [attr.title]="item.title"
         tabindex="0"
         pRipple
       >
@@ -73,6 +74,7 @@ import { MenuService } from '../../../services/app-menu.service';
         [state]="item.state"
         [queryParams]="item.queryParams"
         [attr.target]="item.target"
+        [attr.title]="item.title"
         tabindex="0"
         pRipple
       >

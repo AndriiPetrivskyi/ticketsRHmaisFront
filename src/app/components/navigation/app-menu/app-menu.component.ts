@@ -28,31 +28,38 @@ export class AppMenuComponent implements OnInit {
             label: 'My tickets',
             icon: 'pi pi-fw pi-user',
             routerLink: ['/my-tickets'],
+            title: 'Tickets criados por si'
           },
           {
             label: 'Tickets',
             icon: 'pi pi-fw pi-ticket',
             routerLink: ['/tickets'],
+            title: 'Todos os tickets'
           },
           {
             label: 'Criar ticket',
             icon: 'pi pi-fw pi-plus-circle',
+            title: '',
             items: [
               {
                 label: 'Pedido de Esclarcimento',
-                routerLink: ['/add-ticket-pedido'],  
+                routerLink: ['/add-ticket-pedido'],
+                title: 'Utilize esta opção para realizar questóes relativas a opções/funcionalidades já existentes nas aplicações'
               },
               {
                 label: 'Report de dificuldades',
                 routerLink: ['/add-ticket-dificuldades'],
+                title: 'Utilize esta opção para reportar casos concretos/particulares de falha na utilização de uma funcionalidade aplicacional'
               },
               {
                 label: 'Exportação salarial',
                 routerLink: ['/add-ticket-salario'],
+                title: 'Utilize esta opção para reportar problemas particulares de exportação salarial'
               },
               {
                 label: 'Envio de Sugestões',
                 routerLink: ['/add-ticket-sugestoes'],
+                title: 'Utilize esta opção para enviar sugestões de melhorias e desenvolvimento futuro das aplicações'
               },
             ]
           },
@@ -60,6 +67,7 @@ export class AppMenuComponent implements OnInit {
             label: 'Report Indisponiblidade',
             icon: 'pi pi-fw pi-exclamation-triangle',
             routerLink: ['/add-report-indisponiblidade'],
+            title: 'Utilize esta opção para reportar indisponiblidades totais/críticas de uma/todas as aplicações. Estes ticket seráo tratados prioritariamente'
           },
         ],
       },
@@ -72,10 +80,12 @@ export class AppMenuComponent implements OnInit {
             command: () => {
               this.authService.logout();
             },
+            title: 'Terminar sessão'
           },
         ],
       },
     ];
+
     if (this.authService.getDecodedToken().type === 'admin') {
       this.model.splice(1, 0, {
         label: 'Area de admin',
@@ -84,6 +94,7 @@ export class AppMenuComponent implements OnInit {
             label: 'Utilizadores',
             icon: 'pi pi-fw pi-id-card',
             routerLink: ['/users'],
+            title: ''
           },
         ],
       });
