@@ -13,4 +13,8 @@ export class TicketService {
       params: { ticketId }
     });
   }
+
+  changeStatus(ticketStatus: string, ticketId: string): Observable<any> {
+    return this.httpClient.post('http://localhost:3000/ticket/changeStatus', { ticketStatus, ticketId });
+  }  
 }
