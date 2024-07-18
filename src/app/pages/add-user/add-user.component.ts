@@ -32,7 +32,6 @@ export class AddUserComponent implements OnInit {
   addUserForm = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
-    password: new FormControl(''),
     email: new FormControl(''),
     type: new FormControl(''),
   });
@@ -42,13 +41,12 @@ export class AddUserComponent implements OnInit {
   createUser() {
     const id = this.addUserForm.get('id')?.value as string;
     const name = this.addUserForm.get('name')?.value as string;
-    const password = this.addUserForm.get('password')?.value as string;
     const email = this.addUserForm.get('email')?.value as string;
     const typeObject = this.addUserForm.get('type')?.value as { type: string } | null;
 
     if (typeObject !== null) {
       const type = typeObject.type;
-      this.adduserService.createUser(id, name, password, email, type);
+      this.adduserService.createUser(id, name, email, type);
     } else {
       console.error("Type is null");
     }

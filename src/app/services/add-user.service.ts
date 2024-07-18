@@ -8,13 +8,12 @@ import { Router } from '@angular/router';
 export class AddUserService {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  createUser(id: String, name: String, password: String, email: String, type: string) {
-    if(id != null && name != null && password != null && email != null && type != null) {
+  createUser(id: String, name: String, email: String, type: string) {
+    if(id != null && name != null && email != null && type != null) {
     this.httpClient
       .post('http://localhost:3000/addUser/addUser', {
         id,
         name,
-        password,
         email,
         type,
       })

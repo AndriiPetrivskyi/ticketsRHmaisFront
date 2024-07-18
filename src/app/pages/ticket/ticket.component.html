@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="row mb-3">
-        <div class="ticket-flex">
+        <div class="ticket-flex" *ngIf="this.authService.getDecodedToken().type === 'admin'">
         <form [formGroup]="ticketForm">
           <strong class="mr-2">Status:</strong>
           <p-dropdown
@@ -22,7 +22,11 @@
             [placeholder]="ticket?.status">
           </p-dropdown>
         </form>
-        <button pButton pRipple class="w-10rem p-button-success" label="Change status" (click)="changeStatus()"></button>
+        <button pButton class="w-10rem p-button-success button" label="Change status" (click)="changeStatus()"></button>
+        </div>
+        <div class="row mb-3">
+          <strong class="mr-2">Status:</strong>
+          <span id="ticket-status">{{ticket?.status}}</span>
         </div>
       </div>
         <div class="col-md-6">
@@ -63,7 +67,7 @@
     </div>
     <div class="card-body">
       <div class="row mb-3">
-        <span id="ticket-type">{{ ticket?.logs }}</span>
+        <div [innerHTML]="ticket?.logs"></div>
       </div>
     </div>
   </div>

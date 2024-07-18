@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TicketService } from '../../services/ticket.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
@@ -23,7 +24,7 @@ export class TicketComponent implements OnInit {
   status: Status[] | undefined;
   ticketForm: FormGroup;
 
-  constructor(private ticketService: TicketService, private route: ActivatedRoute) {
+  constructor(private ticketService: TicketService, private route: ActivatedRoute, public authService: AuthenticationService) {
     this.ticketForm = new FormGroup({
       status: new FormControl(''),
     });
@@ -59,8 +60,10 @@ export class TicketComponent implements OnInit {
   changeStatus() {
     const selectedStatus = this.ticketForm.get('status')?.value;
   
-    if (selectedStatus) {
+    if (selectedStatus && selectedStatus !== this.ticket.status) {
       const ticketStatus = selectedStatus.status;
+      
+      window.location.reload();
       this.ticketService.changeStatus(ticketStatus, this.ticketId).subscribe(
         (response: any) => {
           console.log('Status changed successfully:', response);
