@@ -5,7 +5,11 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, FormsModule  } from '@angular/forms';
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { EditorModule } from 'primeng/editor';
+import { MessagesModule } from 'primeng/messages';
+import { Message } from 'primeng/api';
 
 interface Status {
   status: string;
@@ -14,7 +18,7 @@ interface Status {
 @Component({
   selector: 'app-ticket',
   standalone: true,
-  imports: [CommonModule, DropdownModule, ReactiveFormsModule, ButtonModule],
+  imports: [CommonModule, DropdownModule, ReactiveFormsModule, ButtonModule, InputTextareaModule, FormsModule, EditorModule, MessagesModule],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss'
 })
@@ -23,6 +27,11 @@ export class TicketComponent implements OnInit {
   ticket: any;
   status: Status[] | undefined;
   ticketForm: FormGroup;
+  message: Message[] = [];
+
+  createCommentForm = new FormGroup({
+    comment: new FormControl(''),
+  });
 
   constructor(private ticketService: TicketService, private route: ActivatedRoute, public authService: AuthenticationService) {
     this.ticketForm = new FormGroup({
@@ -74,5 +83,27 @@ export class TicketComponent implements OnInit {
       );
     }
   }
-  
+
+  createComment() {
+    const comment = this.createCommentForm.get('comment')?.value as string;
+
+    if(comment.length > 100) {
+    window.location.reload();
+    this.ticketService.createComment(comment, this.ticketId).subscribe();
+    } else {
+      this.message = [{ severity: 'error', detail: 'Minimum 100 symbols!' }];
+  }
+  }
+
+  createCommentUser() {
+    const status = "Encaminhado para fornecedor";
+    const comment = this.createCommentForm.get('comment')?.value as string;
+
+    if(comment.length > 100) {
+      window.location.reload();
+    this.ticketService.createCommentUser(comment, status, this.ticketId).subscribe();
+    } else {
+        this.message = [{ severity: 'error', detail: 'Minimum 100 symbols!' }];
+    }
+  }
 }

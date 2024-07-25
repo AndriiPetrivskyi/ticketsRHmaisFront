@@ -17,4 +17,12 @@ export class TicketService {
   changeStatus(ticketStatus: string, ticketId: string): Observable<any> {
     return this.httpClient.post('http://localhost:3000/ticket/changeStatus', { ticketStatus, ticketId });
   }  
+
+  createComment(comment: string, ticketId: string): Observable<any> {
+    return this.httpClient.post('http://localhost:3000/ticket/createComment', { comment, ticketId });
+  }
+
+  createCommentUser(comment: string, ticketStatus: string, ticketId: string): Observable<any> {
+    return this.httpClient.post('http://localhost:3000/ticket/createCommentUser', { comment, ticketStatus, ticketId});
+  }
 }

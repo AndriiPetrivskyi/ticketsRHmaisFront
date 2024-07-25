@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
@@ -30,18 +31,16 @@ export class AuthenticationService {
   }
 
   login(id: string, password: string) {
-    this.httpClient
-      .post('http://localhost:3000/auth/login', {
-        id,
-        password,
-      })
-      .subscribe((response: any) => {
-        console.log('login response: ', response);
-        if (response.token) {
-          this.setToken(response.token);
-          this.router.navigate(['/']);
-        }
-      });
+    return this.httpClient.post<any>('http://localhost:3000/auth/login', { id, password })
+      .pipe(
+        map(response => {
+          if (response.token) {
+            this.setToken(response.token);
+            this.router.navigate(['/']);
+          }
+        return response;
+      }),
+    );
   }
 
   logout() {

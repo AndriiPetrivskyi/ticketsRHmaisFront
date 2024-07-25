@@ -4,16 +4,19 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ResetPassService } from '../../services/reset-pass.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessagesModule } from 'primeng/messages';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-reset-pass',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, ButtonModule, MessagesModule],
   templateUrl: './reset-pass.component.html',
   styleUrls: ['./reset-pass.component.scss']
 })
 export class ResetPassComponent implements OnInit {
   token: string | null = null;
+  message: Message[] = [];
 
   resetPassForm = new FormGroup({
     password: new FormControl(''),
@@ -37,6 +40,8 @@ export class ResetPassComponent implements OnInit {
 
     if (this.token && password === ConfirmPass) {
       this.resetPassService.changePass(this.token, password);
+    } else {
+      this.message = [{ severity: 'error', detail: 'Password is not the same in two fields' }];
     }
   }
 }

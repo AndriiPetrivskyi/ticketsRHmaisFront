@@ -1,12 +1,29 @@
 strong {
     font-size: 22px;
-}
-
-span {
+  }
+  
+  span {
     font-size: 18px;
-}
-
-.ticket-flex {
+  }
+  
+  .limited-text {
+    word-wrap: break-word;
+  }  
+  
+  .ticket-flex {
     display: flex;
     gap: 1rem;
-}
+  }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .comment-form p-editor {
+    margin-bottom: 15px;
+  }
+  
+  .comment-form button {
+    align-self: flex-end;
+  }

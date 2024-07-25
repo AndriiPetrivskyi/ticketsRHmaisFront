@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,15 @@ export class ResetPassService {
   }
 
   resetPassRequest(email: string) {
-    return this.httpClient.post('http://localhost:3000/resetPass/request-reset-password', { email });
+    return this.httpClient.post('http://localhost:3000/resetPass/request-reset-password', { email }).pipe(
+      map(response => {
+        console.log('Response from server:', response);
+        return response;
+      }),
+      catchError(error => {
+        console.error('Error in resetPassRequest:', error);
+        return throwError(error);
+      })
+    );
   }
 }

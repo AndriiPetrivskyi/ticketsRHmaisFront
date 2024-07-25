@@ -4,15 +4,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ResetPassService } from '../../services/reset-pass.service';
+import { MessagesModule } from 'primeng/messages';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-reset-pass-request',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, ButtonModule, MessagesModule],
   templateUrl: './reset-pass-request.component.html',
-  styleUrl: './reset-pass-request.component.scss'
+  styleUrls: ['./reset-pass-request.component.scss']
 })
 export class ResetPassRequestComponent {
+  message: Message[] = [];
+
   resetPassForm = new FormGroup({
     email: new FormControl(''),
   });
@@ -22,9 +26,13 @@ export class ResetPassRequestComponent {
   sendLink() {
     const email = this.resetPassForm.get('email')?.value as string;
 
-    this.resetPassRequestService.resetPassRequest(email).subscribe(
-      response => alert('Email with link sented successfully, open your mailbox'),
-      error => console.error('Error sending email', error)
-    );
+    this.resetPassRequestService.resetPassRequest(email).subscribe({
+      next: (response) => {
+        this.message = [{ severity: 'success', detail: 'Link sent successfully!' }];
+      },
+      error: (err) => {
+        this.message = [{ severity: 'error', detail: 'Invalid email!' }];
+      }
+    });
   }
 }

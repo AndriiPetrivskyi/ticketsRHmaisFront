@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="row mb-3">
-        <div class="ticket-flex" *ngIf="this.authService.getDecodedToken().type === 'admin'">
+        <div class="ticket-flex" *ngIf="this.authService.getDecodedToken().type === 'admin' && ticket.status !== 'Concluído'">
         <form [formGroup]="ticketForm">
           <strong class="mr-2">Status:</strong>
           <p-dropdown
@@ -24,7 +24,7 @@
         </form>
         <button pButton class="w-10rem p-button-success button" label="Change status" (click)="changeStatus()"></button>
         </div>
-        <div class="row mb-3">
+        <div class="row mb-3" *ngIf="this.authService.getDecodedToken().type !== 'admin' || ticket.status === 'Concluído'">
           <strong class="mr-2">Status:</strong>
           <span id="ticket-status">{{ticket?.status}}</span>
         </div>
@@ -37,7 +37,7 @@
       <div class="row mb-3">
         <div class="col-md-12">
           <strong>Body:</strong>
-          <div id="ticket-body" style="font-size: 17px;" [innerHTML]="ticket?.body"></div>
+          <div id="ticket-body" class="limited-text" [innerHTML]="ticket?.body"></div>
         </div>
       </div>
       <div class="row mb-3">
@@ -52,11 +52,34 @@
           <span id="ticket-date"> {{ ticket?.date | date: 'YYYY/MM/dd HH:mm' }}</span>
         </div>
       </div>
+      <div class="row">
       <div class="col-md-6">
         <strong>SubType:</strong>
         <span id="ticket-subtype"> {{ ticket?.subType }}</span>
       </div>
-    </div>
+      <div class="mt-3">
+        <div class="col-md-6" *ngIf="this.authService.getDecodedToken().type === 'admin' && ticket.status !== 'Concluído' || ticket.status === 'Devolvido ao criador'">
+          <form [formGroup]="createCommentForm" class="comment-form">
+            <strong htmlFor="comment">Comments:</strong>
+            <p-editor formControlName="comment" [style]="{ height: '120px' }">
+              <ng-template pTemplate="header">
+                <span class="ql-formats">
+                  <button type="button" class="ql-image" aria-label="Underline"></button>
+                </span>
+              </ng-template>
+            </p-editor>
+            <p-messages
+          [(value)]="message"
+          *ngIf="message && message.length > 0"
+          [enableService]="false"
+          [closable]="true"
+          class="mb-3"
+        ></p-messages>
+            <button pButton class="w-10rem p-button-success button" label="Submeter" *ngIf="this.authService.getDecodedToken().type === 'user'" (click)="createCommentUser()"></button>
+            <button pButton class="w-10rem p-button-success button" label="Submeter" *ngIf="this.authService.getDecodedToken().type === 'admin'" (click)="createComment()"></button>
+          </form>
+        </div>
+      </div>      
   </div>
 </div>
 

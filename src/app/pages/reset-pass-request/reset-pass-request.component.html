@@ -37,7 +37,14 @@
             style="padding: 1rem"
           />
         </div>
-        </form>
+      </form>
+        <p-messages
+          [(value)]="message"
+          *ngIf="message && message.length > 0"
+          [enableService]="false"
+          [closable]="true"
+          class="mb-3"
+        ></p-messages>
         <button
           pButton
           pRipple
